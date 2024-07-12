@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permintaan Maaf Romantis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #yesButton {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336;
+            color: white;
+        }
+        #flower {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="begron.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="card">
+        <p>Maaf ya Audrey, ngeselin suka ilang-ilang kalau main valo</p>
+        <button id="yesButton">Iya, dimaafin</button>
+        <button id="noButton">No</button>
+        <div id="flower">
+            <img src="kucing.jpeg" alt="Bunga" width="100">
+        </div>
+    </div>
+    
+    <script>
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const flower = document.getElementById('flower');
+        const audio = document.getElementById('audio');
+
+        yesButton.addEventListener('click', () => {
+            flower.style.display = 'block';
+            audio.play();
+        });
+
+        noButton.addEventListener('mouseover', (e) => {
+            const offsetX = Math.random() * 200 - 100;
+            const offsetY = Math.random() * 200 - 100;
+            const newX = Math.min(Math.max(e.clientX + offsetX, 0), window.innerWidth - noButton.clientWidth);
+            const newY = Math.min(Math.max(e.clientY + offsetY, 0), window.innerHeight - noButton.clientHeight);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+        });
+    </script>
+
+    <audio id="audio" controls>
+        <source src="Love Like you.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
